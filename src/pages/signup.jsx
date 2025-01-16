@@ -9,8 +9,9 @@ const SignupPage = () => {
   const [password, setPassword] = useState("");
 
   const createUser = () => {
-      createUserWithEmailAndPassword(auth, email, password)
-          .then((value) => alert("sucess"));
+    createUserWithEmailAndPassword(auth, email, password).then((value) =>
+      alert("sucess")
+    );
   };
 
   return (
