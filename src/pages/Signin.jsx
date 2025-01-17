@@ -1,45 +1,43 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../firebase";
 
 const auth = getAuth(app);
 
-const SignupPage = () => {
+const SigninPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const createUser = () => {
-    createUserWithEmailAndPassword(auth, email, password).then((value) =>
-      alert("sucess")
-    );
+  const signinUser = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((value) => console.log("Signin success"))
+      .catch((error) => console.log(error));
   };
 
   return (
-    <div className="signup-page">
-      <h1>Signup Page</h1>
+    <div>
+      <h1>Signin Page</h1>
       <label>Email</label>
       <input
         style={{ margin: "10px" }}
+        type="email"
+        placeholder="Enter you email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
-        type="email"
-        required
-        placeholder="Enter you email"
       />
       <br />
       <label>Password</label>
       <input
         style={{ margin: "10px" }}
+        type="email"
+        placeholder="Enter password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
-        type="password"
-        required
-        placeholder="Enter password"
       />
       <br />
-      <button onClick={createUser}>Signup</button>
+      <button onClick={signinUser}>Signin</button>
     </div>
   );
 };
 
-export default SignupPage;
+export default SigninPage;
